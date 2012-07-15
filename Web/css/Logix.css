@@ -1,0 +1,74 @@
+/* Logix.css */
+
+html,body { 
+	font-family: tahoma, arial; 
+	background-color: #497E9E;
+	color: #404;
+}
+
+.box {
+	width: 1000px;
+	margin: 20px auto;
+	padding: 10px;
+	border: 1px solid black;
+	background-color: #cdcdcd;
+}
+
+h1 {text-align: center;}
+
+canvas {
+	border: 1px solid black;
+	background-color: black;
+}
+
+#divGame > table {
+	margin: 0 auto;
+	border-collapse: collapse;
+	xwidth: 100%;
+}
+#divGame > table tr td:last-child {
+	border-right: 2px solid black;
+}
+#divGame > table tr:last-child td {
+	border-bottom: 2px solid black;
+}
+#divGame > table tr:first-child th:first-child {
+	background-color: #cdcdcd;
+	border-top: 0px;
+	border-left: 0px;
+}
+#divGame > table tr {
+
+}
+
+#divGame > table th {
+	border: 2px solid black;
+	height: 110px;
+	width: 110px;
+	padding: 5px;
+	background-color: #ddd;
+}
+#divGame > table th.completed {
+	background-color: #72C754;
+}
+
+#divGame > table td {
+	border: 1px solid black;
+	padding: 5px;
+	height: 110px;
+	width: 110px;
+	background-color: /*#fff*/ #aaddff;
+}
+#divGame > table td.check {
+	/*	background-color: #5E9EFF; */
+	background-image: url('../images/Green Check.png');
+	background-repeat: no-repeat;
+	background-position:center; 
+}
+#divGame > table td.cross {
+	/*	background-color: #FF5E5E; */
+	background-image: url('../images/Red X.png');
+	background-repeat: no-repeat;
+	background-position:center; 
+}
+

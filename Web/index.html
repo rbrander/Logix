@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>Logix</title>
+	<link rel="stylesheet" type="text/css" href="css/Logix.css" />
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript">
+		$j = jQuery.noConflict();
+	</script>
+	<script type="text/javascript" src="js/Logix.js"></script>
+	<script type="text/javascript" src="js/javascript.js"></script>
+</head>
+<body>
+	<div class="box">
+		<h1>Logix</h1>
+		<hr />
+		<div id="divGameForm" style="text-align:center;">
+			<form onsubmit="return onNewGame(this, event);">
+				<span>
+					<label for="selWidth">Width:&nbsp;</label>
+					<select name="width" id="selWidth">
+						<option>3</option>
+						<option>4</option>
+						<option>5</option>
+						<option selected>6</option>
+						<option>7</option>
+						<option>8</option>
+						<option>9</option>
+					</select>
+				</span>
+				<span>
+					<label for="selHeight">Height:&nbsp;</label>
+					<select name="height" id="selHeight">
+						<option>3</option>
+						<option selected>4</option>
+						<option>5</option>
+						<option>6</option>
+						<option>7</option>
+						<option>8</option>
+						<option>9</option>
+					</select>
+				</span>
+				<span>
+					<label for="selDifficulty">Difficulty:&nbsp;</label>
+					<select name="difficulty" id="selDifficulty">
+						<option value="easy">Easy</option>
+						<option value="medium">Medium</option>
+						<option value="hard">Hard</option>
+					</select>
+				</span>
+				<button type="submit">New Game</button>
+			</form>
+		</div>
+		<br />
+		<div id="divGame"></div>
+		<br />
+	</div>
+</body>
+</html>
