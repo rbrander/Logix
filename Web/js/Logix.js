@@ -107,7 +107,9 @@ function Logix(_div, _level) {
 		self.level++;
 		
 		// set/update cookie
-		self.setCookie('level', self.level.toString());
+		var levelCookie = self.getCookie('level');
+		if (!levelCookie || parseInt(levelCookie) < self.level)
+			self.setCookie('level', self.level.toString());
 		
 		// update the select
 		self.addLevelToSelect();
