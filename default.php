@@ -1,0 +1,1 @@
+<?php   header( 'Location: Logix/Web/index.html' ) ;?>
