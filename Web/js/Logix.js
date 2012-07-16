@@ -97,6 +97,7 @@ function Logix(_div, _level) {
 			if (self.level > self.levels.length) {
 				alert('Game Over! You won!');
 			} else {
+				self.addLevelToSelect();
 				alert('Level '+(self.level-1)+' finished;  Level '+self.level+' unlocked!');
 				self.loadLevel();
 			}
@@ -105,14 +106,10 @@ function Logix(_div, _level) {
 	
 	self.levelUp = function() {
 		self.level++;
-		
 		// set/update cookie
 		var levelCookie = self.getCookie('level');
 		if (!levelCookie || parseInt(levelCookie) < self.level)
 			self.setCookie('level', self.level.toString());
-		
-		// update the select
-		self.addLevelToSelect();
 	};
 	
 	self.addLevelToSelect = function() {
