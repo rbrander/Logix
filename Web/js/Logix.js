@@ -34,11 +34,12 @@ function Logix(_div, _level) {
 		if (typeof(self.level) == 'undefined') {
 			self.level = 1;
 			// check if there is a cookie
-			var levelCookie = self.getCookie('level');
+			var levelCookie = self.getCookieLevel();
 			if (levelCookie) {
-				parsedLevelCookie = parseInt(levelCookie);
-				if (parsedLevelCookie > 1) {
-					while (self.level < parsedLevelCookie) {
+				if (levelCookie > 1) {
+					if (levelCookie > self.levels.length)
+						levelCookie = self.levels.length;
+					while (self.level < levelCookie) {
 						self.level++;
 						self.addLevelToSelect();
 					}
@@ -46,6 +47,12 @@ function Logix(_div, _level) {
 			}	
 		}
 		self.loadLevel();
+	};
+	
+	self.getCookieLevel = function() {
+		var levelCookie = self.getCookie('level');
+		if (levelCookie)
+			return parseInt(levelCookie);
 	};
 	
 	self.loadLevel = function() {
@@ -91,6 +98,8 @@ function Logix(_div, _level) {
 	self.checkGameOver = function() {
 		var finishedLevel = $j(self.div).find('th.completed').length == self.getWidth() + self.getHeight();
 		if (finishedLevel) {
+			var cookieLevel = self.getCookieLevel();
+			var levelUnlocked = (cookieLevel && cookieLevel < (self.level+1));
 			// level up
 			self.levelUp();
 			// check if there are any more levels to accomplish
@@ -98,7 +107,7 @@ function Logix(_div, _level) {
 				alert('Game Over! You won!');
 			} else {
 				self.addLevelToSelect();
-				alert('Level '+(self.level-1)+' finished;  Level '+self.level+' unlocked!');
+				alert('Level '+(self.level-1)+' finished' + (levelUnlocked ? ';  Level '+self.level+' unlocked!' : ''));
 				self.loadLevel();
 			}
 		}
@@ -107,15 +116,27 @@ function Logix(_div, _level) {
 	self.levelUp = function() {
 		self.level++;
 		// set/update cookie
-		var levelCookie = self.getCookie('level');
-		if (!levelCookie || parseInt(levelCookie) < self.level)
+		var levelCookie = self.getCookieLevel();
+		if (!levelCookie || levelCookie < self.level)
 			self.setCookie('level', self.level.toString());
 	};
 	
 	self.addLevelToSelect = function() {
 		var select = $j('#selLevel')[0];
-		select.options[select.options.length] = new Option('Level '+self.level, self.level.toString());
-		select.selectedIndex = select.options.length-1;
+		
+		// find out if it already exists
+		var exists = false;
+		var i;
+		for (i = 0; i < select.options.length && !exists; i++)
+			if (select.options[i].value == self.level.toString())
+				exists = true;
+		
+		if (!exists) {
+			select.options[select.options.length] = new Option('Level '+self.level, self.level.toString());
+			select.selectedIndex = select.options.length-1;
+		} else {
+			select.selectedIndex = i - 1;
+		}
 	};
 	
 	self.checkClue = function(x, y) {
