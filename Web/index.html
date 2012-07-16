@@ -3,6 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<title>Logix</title>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 	<link rel="stylesheet" type="text/css" href="css/Logix.css" />
 	<script type="text/javascript" src="js/jquery.min.js"></script>
 	<script type="text/javascript">
@@ -16,14 +17,15 @@
 		<h1>Logix</h1>
 		<hr />
 		<div id="divGameForm" style="text-align:center;">
-			<form onsubmit="return onNewGame(this, event);">
+			<form action="" onsubmit="return onNewGame(this, event);">
+				<!--
 				<span>
 					<label for="selWidth">Width:&nbsp;</label>
 					<select name="width" id="selWidth">
 						<option>3</option>
 						<option>4</option>
 						<option>5</option>
-						<option selected>6</option>
+						<option selected="selected">6</option>
 						<option>7</option>
 						<option>8</option>
 						<option>9</option>
@@ -33,7 +35,7 @@
 					<label for="selHeight">Height:&nbsp;</label>
 					<select name="height" id="selHeight">
 						<option>3</option>
-						<option selected>4</option>
+						<option selected="selected">4</option>
 						<option>5</option>
 						<option>6</option>
 						<option>7</option>
@@ -47,6 +49,13 @@
 						<option value="easy">Easy</option>
 						<option value="medium">Medium</option>
 						<option value="hard">Hard</option>
+					</select>
+				</span>
+				-->
+				<span>
+					<label for="selLevel">Level:&nbsp;</label>
+					<select name="level" id="selLevel">
+						<option value="1">Level 1</option>
 					</select>
 				</span>
 				<button type="submit">New Game</button>
