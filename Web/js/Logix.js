@@ -32,12 +32,18 @@ function Logix(_div, _level) {
 	
 	self.newGame = function() {
 		if (typeof(self.level) == 'undefined') {
+			self.level = 1;
 			// check if there is a cookie
 			var levelCookie = self.getCookie('level');
-			if (levelCookie)
-				self.level = parseInt(levelCookie);
-			else			
-				self.level = 1;
+			if (levelCookie) {
+				parsedLevelCookie = parseInt(levelCookie);
+				if (parsedLevelCookie > 1) {
+					while (self.level < parsedLevelCookie) {
+						self.level++;
+						self.addLevelToSelect();
+					}
+				}
+			}	
 		}
 		self.loadLevel();
 	};
@@ -104,6 +110,10 @@ function Logix(_div, _level) {
 		self.setCookie('level', self.level.toString());
 		
 		// update the select
+		self.addLevelToSelect();
+	};
+	
+	self.addLevelToSelect = function() {
 		var select = $j('#selLevel')[0];
 		select.options[select.options.length] = new Option('Level '+self.level, self.level.toString());
 		select.selectedIndex = select.options.length-1;

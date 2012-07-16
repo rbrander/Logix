@@ -2,7 +2,7 @@
 
 
 $j(function() {
-	$j('form').submit();
+	window._logix = new Logix('#divGame');
 });
 
 var onNewGame = function(_form, _evt) {
