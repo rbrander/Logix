@@ -6,11 +6,8 @@ $j(function() {
 });
 
 var onNewGame = function(_form, _evt) {
-	var width = parseInt(_form.width.value);
-	var height = parseInt(_form.height.value);
-	var difficulty = _form.difficulty.value;
-	console.log('width: ' +width + '; height = ' + height);
+	var level = _form.level.value;
+	window._logix = new Logix('#divGame', level);
 	
-	window._logix = new Logix('#divGame', width, height, difficulty);
 	return false;
 }
